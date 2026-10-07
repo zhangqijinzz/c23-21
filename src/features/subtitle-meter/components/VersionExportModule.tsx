@@ -40,8 +40,21 @@ export function VersionExportModule({
             <button
               key={version.id}
               onClick={() => void vm.restoreVersion(version.id)}
+              title={
+                version.kind === "batch-before"
+                  ? "批量修正前自动留存"
+                  : version.kind === "batch-after"
+                    ? "批量修正后自动留存"
+                    : undefined
+              }
             >
               {version.label}
+              {version.kind === "batch-before" && (
+                <span className="version-kind">修正前自动快照</span>
+              )}
+              {version.kind === "batch-after" && (
+                <span className="version-kind">修正后自动快照</span>
+              )}
               <span>恢复 ↗</span>
             </button>
           ))}

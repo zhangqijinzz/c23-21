@@ -1,15 +1,20 @@
 import type { SubtitleCue, SubtitleIssue } from "../models";
 import type { SubtitleMeterViewModel } from "../viewmodels/subtitleMeterViewModel";
+import { BatchFixPreview, BatchFixResult } from "./BatchFixModule";
 export function InspectionModule({
   cues,
   issues,
   vm,
   selectedId,
+  batchFix,
+  planToken,
 }: {
   cues: SubtitleCue[];
   issues: SubtitleIssue[];
   vm: SubtitleMeterViewModel;
   selectedId: string | null;
+  batchFix: ReturnType<SubtitleMeterViewModel["getSnapshot"]>["batchFix"];
+  planToken: string;
 }) {
   const selected = cues.find((cue) => cue.id === selectedId) ?? cues[0];
   const errors = issues.filter((issue) => issue.severity === "error").length;
@@ -55,6 +60,12 @@ export function InspectionModule({
           <div className="clear-state">✓ 当前未发现明显问题</div>
         )}
       </div>
+      {issues.length > 0 &&
+        (batchFix ? (
+          <BatchFixResult vm={vm} batchFix={batchFix} />
+        ) : (
+          <BatchFixPreview vm={vm} planToken={planToken} />
+        ))}
       {selected && (
         <div className="edit-card">
           <div className="edit-title">

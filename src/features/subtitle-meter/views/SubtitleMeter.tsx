@@ -180,6 +180,10 @@ export function SubtitleMeter() {
                 issues={state.issues}
                 vm={vm}
                 selectedId={state.selectedId}
+                batchFix={state.batchFix}
+                planToken={`${project.updatedAt}:${state.issues
+                  .map((issue) => issue.id)
+                  .join(",")}`}
               />
               <PreviewModule cue={selected} />
             </div>

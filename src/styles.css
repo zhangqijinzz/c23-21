@@ -958,3 +958,151 @@ footer {
     border: 0;
   }
 }
+
+/* 批量修正 */
+.batch-fix-card {
+  margin-top: 13px;
+  border: 1px solid #e7e8e1;
+  border-radius: 7px;
+  padding: 11px 12px;
+  background: #fbfaf5;
+}
+.batch-fix-card.result {
+  background: #f4f8ec;
+  border-color: #d8e4c4;
+}
+.batch-fix-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.batch-fix-head strong {
+  font-size: 11px;
+  color: #46523c;
+}
+.batch-fix-head span {
+  font-size: 9px;
+  color: #96988e;
+}
+.batch-fix-list {
+  margin-top: 9px;
+  display: grid;
+  gap: 4px;
+}
+.batch-fix-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 7px;
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid #efefe8;
+  font-size: 10px;
+  color: #6c7166;
+  text-align: left;
+}
+.batch-fix-row.select-all {
+  background: transparent;
+  border-color: transparent;
+  font-weight: 600;
+  color: #607e39;
+}
+.batch-fix-row input[type="checkbox"] {
+  margin-top: 2px;
+  accent-color: #8cbd54;
+}
+.fix-kind {
+  flex: none;
+  font:
+    9px "DM Mono",
+    monospace;
+  color: #8a9a70;
+  border: 1px solid #e0e6d2;
+  border-radius: 4px;
+  padding: 1px 5px;
+  margin-top: 1px;
+}
+.fix-body {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.fix-body strong {
+  font-size: 10px;
+  font-weight: 600;
+  color: #4d5347;
+}
+.fix-body small {
+  font-size: 9px;
+  line-height: 1.5;
+  color: #96988e;
+  word-break: break-word;
+}
+.batch-fix-blocked,
+.batch-fix-unsupported {
+  margin-top: 9px;
+  display: grid;
+  gap: 4px;
+}
+.batch-fix-subhead {
+  font:
+    9px "DM Mono",
+    monospace;
+  letter-spacing: 0.6px;
+  color: #ae8b44;
+}
+.batch-fix-unsupported .batch-fix-subhead {
+  color: #bf6256;
+}
+.batch-fix-row.blocked {
+  background: #fdf8ee;
+  border-color: #f0e4c8;
+}
+.batch-fix-row.blocked .fix-kind {
+  color: #bb9651;
+  border-color: #ecdcba;
+}
+.batch-fix-row.unsupported {
+  background: #fdf3f1;
+  border-color: #f2d9d4;
+}
+.batch-fix-row.unsupported .fix-kind {
+  color: #bf6256;
+  border-color: #efd2cc;
+}
+.batch-fix-row.applied .undo-button {
+  margin-left: auto;
+  flex: none;
+  align-self: center;
+  padding: 4px 9px;
+}
+.batch-fix-row.undone {
+  opacity: 0.6;
+  background: transparent;
+}
+.batch-fix-actions {
+  margin-top: 10px;
+  display: grid;
+  gap: 5px;
+}
+.batch-fix-actions small {
+  font-size: 9px;
+  color: #9c9f95;
+}
+.batch-fix-actions .export-button {
+  justify-self: start;
+}
+.link-button {
+  border: 0;
+  background: none;
+  color: #74904c;
+  font-size: 9px;
+  cursor: pointer;
+  padding: 0;
+}
+.version-list button .version-kind {
+  margin-left: 6px;
+  font-size: 9px;
+  color: #96a86f;
+}
