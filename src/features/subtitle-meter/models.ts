@@ -8,6 +8,7 @@ export interface SubtitleCue {
 }
 export type IssueType =
   | "overlap"
+  | "gap-too-narrow"
   | "too-short"
   | "too-fast"
   | "too-long"
@@ -20,6 +21,8 @@ export interface SubtitleIssue {
   severity: "info" | "warning" | "error";
   message: string;
 }
+import type { AppliedFix, BatchFixPlan } from "./analyzers/batchFixer";
+
 export interface SubtitleProject {
   id: string;
   name: string;
@@ -31,6 +34,7 @@ export interface SubtitleProject {
     label: string;
     savedAt: number;
     cues: SubtitleCue[];
+    kind?: "manual" | "before-batch-fix";
   }>;
 }
 export interface MeterState {
@@ -40,6 +44,8 @@ export interface MeterState {
   selectedId: string | null;
   notice: string;
   zoom: number;
+  batchPlan: BatchFixPlan | null;
+  appliedFixes: AppliedFix[];
 }
 export const emptyState = (): MeterState => ({
   phase: "empty",
@@ -48,4 +54,6 @@ export const emptyState = (): MeterState => ({
   selectedId: null,
   notice: "",
   zoom: 1,
+  batchPlan: null,
+  appliedFixes: [],
 });

@@ -180,6 +180,8 @@ export function SubtitleMeter() {
                 issues={state.issues}
                 vm={vm}
                 selectedId={state.selectedId}
+                batchPlan={state.batchPlan}
+                appliedFixes={state.appliedFixes}
               />
               <PreviewModule cue={selected} />
             </div>

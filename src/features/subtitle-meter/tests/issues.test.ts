@@ -20,6 +20,14 @@ describe("issue detection", () => {
       ),
     ).toBe(true);
   });
+  it("flags gaps below the minimum separately from short duration", () => {
+    const issues = detectIssues([
+      cue("1", 0, 1000, "A"),
+      cue("2", 1050, 2000, "B"),
+    ]);
+    expect(issues.map((i) => i.type)).toContain("gap-too-narrow");
+    expect(issues.map((i) => i.type)).not.toContain("too-short");
+  });
   it("detects empty, short, fast, and long captions", () => {
     const issues = detectIssues([
       cue("1", 0, 100, ""),

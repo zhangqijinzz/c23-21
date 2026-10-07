@@ -958,3 +958,147 @@ footer {
     border: 0;
   }
 }
+.batch-fix {
+  margin-top: 13px;
+  border: 1px solid #eceadf;
+  border-radius: 8px;
+  background: #faf9f4;
+  padding: 10px 12px;
+}
+.batch-fix-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.batch-fix-bar strong {
+  display: block;
+  font-size: 11px;
+  color: #4d5a38;
+}
+.batch-fix-bar small {
+  display: block;
+  margin-top: 2px;
+  font-size: 9px;
+  color: #96988e;
+}
+.batch-fix-bar .secondary-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.batch-group {
+  margin-top: 10px;
+  border-top: 1px dashed #e4e3d6;
+  padding-top: 9px;
+}
+.batch-group-title {
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  color: #8c9085;
+  margin-bottom: 6px;
+}
+.fix-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-bottom: 1px solid #efeee6;
+  background: none;
+  padding: 6px 0;
+  cursor: pointer;
+}
+.fix-row:last-child {
+  border-bottom: 0;
+}
+.fix-detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  border: 0;
+  background: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+}
+.fix-head {
+  font-size: 10px;
+  color: #55603f;
+}
+.fix-times {
+  font:
+    9px "DM Mono",
+    monospace;
+  color: #9c9f95;
+}
+.fix-reason {
+  font-size: 9px;
+  color: #bb9651;
+}
+.fix-row.applied .fix-head::before {
+  content: "✓ ";
+  color: #719148;
+}
+.fix-row.unresolved .fix-head {
+  color: #a9803f;
+}
+.undo-button {
+  flex-shrink: 0;
+  border: 1px solid #e3d9c6;
+  background: #fff;
+  border-radius: 5px;
+  padding: 4px 9px;
+  color: #a06d45;
+  font-size: 10px;
+  cursor: pointer;
+}
+.batch-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 9px;
+}
+.apply-fix-button {
+  border: 0;
+  border-radius: 6px;
+  background: #7a9b46;
+  padding: 8px 14px;
+  color: #fff;
+  font-size: 11px;
+  cursor: pointer;
+}
+.batch-safe-tip,
+.batch-rename-tip {
+  font-size: 9px;
+  color: #96988e;
+}
+.batch-rename-tip {
+  margin: 7px 0 0;
+  color: #bb9651;
+}
+.manual-group {
+  background: #fbf7ee;
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+.manual-types {
+  margin-top: 9px;
+  font-size: 9px;
+  color: #96988e;
+}
+.manual-types summary {
+  cursor: pointer;
+}
+.manual-types ul {
+  margin: 6px 0 0;
+  padding-left: 16px;
+  display: grid;
+  gap: 3px;
+}
+.manual-types strong {
+  color: #6f7464;
+}

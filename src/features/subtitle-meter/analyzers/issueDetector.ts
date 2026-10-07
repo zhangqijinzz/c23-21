@@ -1,3 +1,4 @@
+import { countChars, MAX_CPS, MIN_DURATION_MS, MIN_GAP_MS } from "./batchFixer";
 import type { SubtitleCue, SubtitleIssue } from "../models";
 export function detectIssues(cues: SubtitleCue[]): SubtitleIssue[] {
   const issues: SubtitleIssue[] = [];
@@ -17,12 +18,12 @@ export function detectIssues(cues: SubtitleCue[]): SubtitleIssue[] {
   const ordered = [...cues].sort((a, b) => a.startMs - b.startMs);
   ordered.forEach((cue, i) => {
     const duration = cue.endMs - cue.startMs,
-      chars = [...cue.text.replace(/\s/g, "")].length;
+      chars = countChars(cue.text);
     if (!cue.text.trim()) add(cue, "empty", "error", "字幕文本为空");
     if (duration <= 0)
       add(cue, "invalid-time", "error", "结束时间必须晚于开始时间");
     else {
-      if (duration < 800)
+      if (duration < MIN_DURATION_MS)
         add(
           cue,
           "too-short",
@@ -30,7 +31,7 @@ export function detectIssues(cues: SubtitleCue[]): SubtitleIssue[] {
           `显示仅 ${(duration / 1000).toFixed(1)} 秒`,
         );
       const cps = chars / (duration / 1000);
-      if (cps > 18)
+      if (cps > MAX_CPS)
         add(cue, "too-fast", "warning", `阅读速度 ${cps.toFixed(1)} 字/秒`);
     }
     if (chars > 42 || cue.text.split("\n").length > 2)
@@ -48,8 +49,8 @@ export function detectIssues(cues: SubtitleCue[]): SubtitleIssue[] {
         "error",
         `与第 ${cue.index} 条字幕重叠 ${((cue.endMs - next.startMs) / 1000).toFixed(1)} 秒`,
       );
-    else if (next && next.startMs - cue.endMs < 120)
-      add(next, "too-short", "info", "与上一条间隔不足 0.12 秒");
+    else if (next && next.startMs - cue.endMs < MIN_GAP_MS)
+      add(next, "gap-too-narrow", "info", "与上一条间隔不足 0.12 秒");
   });
   return issues;
 }
